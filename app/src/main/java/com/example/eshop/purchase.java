@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +17,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class purchase extends Fragment {
+
+    TextView textView1, textView2, textView3, textView4;
+    Button price1, price2, price3, price4;
+    Button tocart1, tocart2, tocart3, tocart4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +66,23 @@ public class purchase extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        View root = inflater.inflate( R.layout.fragment_register, null, false );
+        textView1 = (TextView) root.findViewById(R.id.textView1);
+        textView2 = (TextView) root.findViewById(R.id.textView2);
+        textView3 = (TextView) root.findViewById(R.id.textView3);
+        textView4 = (TextView) root.findViewById(R.id.textView4);
+
+        price1 = (Button) root.findViewById(R.id.price1);
+        price2 = (Button) root.findViewById(R.id.price2);
+        price3 = (Button) root.findViewById(R.id.price3);
+        price4 = (Button) root.findViewById(R.id.price4);
+
+        tocart1 = (Button) root.findViewById(R.id.toCart1);
+        tocart2 = (Button) root.findViewById(R.id.toCart2);
+        tocart3 = (Button) root.findViewById(R.id.toCart3);
+        tocart4 = (Button) root.findViewById(R.id.toCart4);
+
         return inflater.inflate(R.layout.fragment_purchase, container, false);
     }
 }
