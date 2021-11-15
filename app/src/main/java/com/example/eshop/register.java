@@ -1,19 +1,32 @@
 package com.example.eshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link register#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class register extends Fragment {
+public class register<mDatabase> extends Fragment {
+
+    //private DatabaseReference mDatabase;
+    //mDatabase = FirebaseDatabase.getInstance().getReference();
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +36,9 @@ public class register extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    EditText fullname, gender, idNumber, address;
+    Button register, login;
 
     public register() {
         // Required empty public constructor
@@ -55,10 +71,57 @@ public class register extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+
+
+        View root = inflater.inflate( R.layout.fragment_register, null, false );
+        fullname = (EditText) root.findViewById(R.id.fullname);
+        gender = (EditText) root.findViewById( R.id.gender );
+        idNumber = (EditText) root.findViewById( R.id.idnumber );
+        address = (EditText) root.findViewById( R.id.address );
+        register = (Button) root.findViewById( R.id.register );
+        login = (Button) root.findViewById( R.id.login );
+
+        login.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), login.class);
+                startActivity( intent );
+                //finish();
+            }
+        } );
+
+        register.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText( getActivity().getApplicationContext(), "Register clicked", Toast.LENGTH_SHORT ).show();
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("details");
+
+            //get all the values
+                String full_name = fullname.getText().toString();
+                String user_gender = gender.getText().toString();
+                String id = idNumber.getText().toString();
+                String user_address = address.getText().toString();
+
+            registerHelper register = new registerHelper(full_name, user_gender, id, user_address);
+
+            reference.child( id ).setValue( register );
+
+                Toast toast = Toast.makeText(
+                    getActivity().getApplicationContext(), "Register clicked"+ full_name, Toast.LENGTH_LONG
+            );
+            toast.setGravity( Gravity.CENTER, 0, 0 );
+            toast.show();
+            }
+        } );
+
+        //return inflater.inflate(R.layout.fragment_register, container, false);
+        return root;
     }
 }
