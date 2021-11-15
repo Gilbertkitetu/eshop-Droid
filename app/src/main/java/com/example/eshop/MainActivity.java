@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private ActivityMainBinding binding;
     TabLayout tabLayout;
-    ViewPager viewPager2;
+    ViewPager2 viewPager2;
     //PagerAdapter pagerAdapter;
     TabItem register, checkout, purchase;
 
@@ -53,9 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), tabLayout.getTabCount());
         //ViewPager2.setAdapter(pagerAdapter);
         viewPager2.setAdapter( pagerAdapter);
+
+        viewPager2.registerOnPageChangeCallback( new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab( tabLayout.getTabAt( position ) );
+            }
+        } );
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -73,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }
