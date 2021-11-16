@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,7 +68,7 @@ public class purchase extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View root = inflater.inflate( R.layout.fragment_register, null, false );
+        View root = inflater.inflate( R.layout.fragment_purchase, null, false );
         textView1 = (TextView) root.findViewById(R.id.textView1);
         textView2 = (TextView) root.findViewById(R.id.textView2);
         textView3 = (TextView) root.findViewById(R.id.textView3);
@@ -83,6 +84,23 @@ public class purchase extends Fragment {
         tocart3 = (Button) root.findViewById(R.id.toCart3);
         tocart4 = (Button) root.findViewById(R.id.toCart4);
 
-        return inflater.inflate(R.layout.fragment_purchase, container, false);
+        tocart1.setOnClickListener( new View.OnClickListener() {
+            //@Override
+            public void onClick(View v) {
+                String price_1 = price1.getText().toString();
+                String description = textView1.getText().toString();
+                Toast.makeText( getActivity().getApplicationContext(), "Item added to cart"+price_1 + description, Toast.LENGTH_SHORT ).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putString( "price", price_1 );
+                checkout check = new checkout();
+                check.setArguments( bundle );
+                getFragmentManager().beginTransaction().replace( R.id.total, check ).commit();
+            }
+        } );
+
+    return root;
+        //return inflater.inflate(R.layout.fragment_purchase, container, false);
     }
+
 }
