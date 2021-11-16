@@ -90,14 +90,12 @@ public class purchase extends Fragment {
                 String price_1 = price1.getText().toString();
                 String description = textView1.getText().toString();
                 Toast.makeText( getActivity().getApplicationContext(), "Item added to cart"+price_1 + description, Toast.LENGTH_SHORT ).show();
-
                 Bundle bundle = new Bundle();
                 bundle.putString( "price", price_1 );
-                checkout check = new checkout();
-                check.setArguments( bundle );
-                getFragmentManager().beginTransaction().replace( R.id.total, check ).commit();
+                getParentFragmentManager().setFragmentResult( "data", bundle );
+
             }
-        } );
+        });
 
     return root;
         //return inflater.inflate(R.layout.fragment_purchase, container, false);
