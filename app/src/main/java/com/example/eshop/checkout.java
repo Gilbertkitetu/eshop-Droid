@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +19,7 @@ import android.widget.Button;
  */
 public class checkout extends Fragment {
     final static String DATA_RECEIVE = "data_receive";
-    Button total;
+    Button total, order;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +68,7 @@ public class checkout extends Fragment {
 
         View v = inflater.inflate( R.layout.fragment_checkout, container, false );
         total = (Button) v.findViewById( R.id.total );
+        order = (Button) v.findViewById( R.id.order );
        // final int[] add = {0};
 
         getParentFragmentManager().setFragmentResultListener( "data", this, new FragmentResultListener() {
@@ -79,6 +81,13 @@ public class checkout extends Fragment {
               //  String add = data + data2;
                 total.setText( data );
 
+            }
+        } );
+
+        order.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText( getActivity().getApplicationContext(), "Items Ordered successfully", Toast.LENGTH_SHORT ).show();
             }
         } );
 

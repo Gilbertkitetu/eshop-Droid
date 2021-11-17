@@ -11,20 +11,17 @@
        android:layout_height="wrap_content"
        android:orientation="vertical"
        android:gravity="center">
-       <ListView
-           android:id="@+id/list"
-           android:layout_width="match_parent"
-           android:layout_height="500dp"/>
+
        <Button
            android:id="@+id/total"
            android:layout_width="match_parent"
            android:text="Total"
-           android:layout_height="wrap_content"/>
+           android:layout_height="400dp"/>
        <Button
            android:id="@+id/order"
            android:layout_width="match_parent"
            android:text="Order"
-           android:layout_height="wrap_content"/>
+           android:layout_height="100dp"/>
    </LinearLayout>
 
 </FrameLayout>
