@@ -39,7 +39,7 @@
                 android:id="@+id/price1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="400ksh" />
+                android:text="40000" />
 
             <Button
                 android:id="@+id/toCart1"
@@ -76,7 +76,7 @@
                 android:id="@+id/price2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="400ksh" />
+                android:text="80000" />
 
             <Button
                 android:id="@+id/toCart2"
@@ -113,7 +113,7 @@
                 android:id="@+id/price3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="400ksh" />
+                android:text="50000" />
 
             <Button
                 android:id="@+id/toCart3"
@@ -150,7 +150,7 @@
                 android:id="@+id/price4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="400ksh" />
+                android:text="70000" />
 
             <Button
                 android:id="@+id/toCart4"
@@ -187,7 +187,7 @@
                 android:id="@+id/price5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="400ksh" />
+                android:text="45000" />
 
             <Button
                 android:id="@+id/toCart5"

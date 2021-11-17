@@ -67,13 +67,21 @@ public class checkout extends Fragment {
 
         View v = inflater.inflate( R.layout.fragment_checkout, container, false );
         total = (Button) v.findViewById( R.id.total );
+       // final int[] add = {0};
+
         getParentFragmentManager().setFragmentResultListener( "data", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+
                 String data = result.getString( "price" );
+                //String data = result.getString( "price" );
+
+              //  String add = data + data2;
                 total.setText( data );
+
             }
         } );
+
 
         return v;
 
